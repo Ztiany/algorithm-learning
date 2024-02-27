@@ -6,13 +6,13 @@
 
  ============================================================================
  */
-#include "DynamicArray.h"
-#include "LinkedList.h"
-#include "CompaniesLinkedList.h"
-#include "SeqStack.h"
-#include "LinkedStack.h"
-#include "SeqQueue.h"
-#include "CircleLinkedList.h"
+#include "list/DynamicArray.h"
+#include "list/LinkedList.h"
+#include "list/CompaniesLinkedList.h"
+#include "list/SeqStack.h"
+#include "list/LinkedStack.h"
+#include "list/SeqQueue.h"
+#include "list/CircleLinkedList.h"
 
 /**
  * 动态数组

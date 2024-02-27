@@ -10,8 +10,8 @@
 #include "bst/BST.h"
 #include "bst/SequenceST.h"
 #include "tools/FileOps.h"
-#include "sort-basic/SortTestHelper.h"
-#include "sort-basic/InsertSort.h"
+#include "sort/SortTestHelper.h"
+#include "sort/InsertSort.h"
 #include <cstdlib>
 #include <iostream>
 #include <vector>
@@ -49,7 +49,7 @@ static void testBST1() {
 
 static void testBST2() {
     // 我们使用文本量更小的共产主义宣言进行试验
-    string filename = "../tools/communist.txt"
+    string filename = "../tools/communist.txt";
     vector<string> words;
     if (FileOps::readFile(filename, words)) {
         cout << "There are totally " << words.size() << " words in " << filename << endl;

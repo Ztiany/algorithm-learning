@@ -7,10 +7,6 @@
  ============================================================================
  */
 #include <cstdlib>
-#include <iostream>
-#include <vector>
-#include <string>
-#include "union-find/UnionFind1.h"
 #include "union-find/UnionFindTestHelper.h"
 
 int main() {
@@ -20,6 +16,5 @@ int main() {
     UnionFIndTestHelper::testUF3(n);
     UnionFIndTestHelper::testUF4(n);
     UnionFIndTestHelper::testUF5(n);
-
     return EXIT_SUCCESS;
 }

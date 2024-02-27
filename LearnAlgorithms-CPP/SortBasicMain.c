@@ -2,17 +2,15 @@
  ============================================================================
 
  Author      : Ztiany
- Description : 排序
+ Description : 排序基础
 
  ============================================================================
  */
-
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 
-#define  MAX 100000
+static int MAX = 1000;
 
 long getSystemTime() {
     struct timeb tb;
@@ -20,13 +18,28 @@ long getSystemTime() {
     return tb.time * 1000 + tb.millitm;
 }
 
-//创建数组
 int *createArray() {
     srand((unsigned int) time(NULL));
     int *arr = (int *) malloc(sizeof(int) * MAX);
     for (int i = 0; i < MAX; i++) {
         arr[i] = rand() % MAX;
     }
+    return arr;
+}
+
+int *createFixedArray() {
+    srand((unsigned int) time(NULL));
+    int *arr = (int *) malloc(sizeof(int) * 8);
+    arr[0] = 8;
+    arr[1] = 9;
+    arr[2] = 6;
+    arr[3] = 5;
+    arr[4] = 3;
+    arr[5] = 1;
+    arr[6] = 4;
+    arr[7] = 5;
+    /*arr[8] = 8;
+    arr[9] = 8;*/
     return arr;
 }
 
@@ -44,7 +57,7 @@ void printArray(int *arr, int count) {
     printf("\n");
 }
 
-/**冒泡排序*/
+/** 冒泡排序 */
 void bubbleSort(int *arr, int size) {
     long start = getSystemTime();
 
@@ -59,7 +72,7 @@ void bubbleSort(int *arr, int size) {
     printf("bubbleSort count %d use time: %ld \n", size, (getSystemTime() - start));
 }
 
-/**选择排序*/
+/** 选择排序 */
 void selectSort(int *arr, int size) {
     long start = getSystemTime();
 
@@ -84,7 +97,7 @@ void selectSort(int *arr, int size) {
 }
 
 
-/**插入排序：将无序序列插入到有序序列中，在基本有序的序列中非常高效，数据序列少的情况下也比较高效*/
+/** 插入排序：将无序序列插入到有序序列中，在基本有序的序列中非常高效，数据序列少的情况下也比较高效 */
 void insertSort(int *arr, int size) {
     long start = getSystemTime();
 
@@ -107,7 +120,7 @@ void insertSort(int *arr, int size) {
     printf("insertSort count %d use time: %ld \n", size, (getSystemTime() - start));
 }
 
-/**希尔排序，对数据进行分段，然后每段运用插入排序*/
+/** 希尔排序：对数据进行分段，然后每段运用插入排序 */
 void shellSort(int *arr, int size) {
     long start = getSystemTime();
 
@@ -143,53 +156,59 @@ void shellSort(int *arr, int size) {
 
 }
 
-
+/** 快速排序 */
 void quickSort(int *arr, int start, int end) {
-    //一个坑+两个指针，再一次迭代中被选坑的数不变
+    printArray(arr, 8);
+    //一个坑 + 两个指针，再一次迭代中被选坑的数不变
     int i = start;
     int j = end;
     int temp;
-    //递归条件
+
+    // 递归条件
     if (i < j) {
-        //移动条件
+        //移动条件：循环完毕后，基点左边的数都比基点小，基点右边的数都比基点大。
         while (i < j) {
-            temp = arr[start];
-            //从右边到左边：指针不重叠，且找到一个最右边的数比坑中的数小
+            // 以第一个元素为基点
+            temp = arr[i];
+
+            // 从右边到左边：指针不重叠，且找到一个最右边的数比坑中的数小
             while (i < j && arr[j] >= temp) {
                 j--;
             }
 
-            //填坑：右边的那个数入坑，此时左边的指针可以往右一步
+            // 填坑：右边的那个数入坑，此时左边的指针可以往右一步
             if (i < j) {
                 arr[i] = arr[j];
                 i++;
             }
-            //从左边到右边：指针不重叠，且找到一个最左边的数比坑中的数大
+
+            // 从左边到右边：指针不重叠，且找到一个最左边的数比坑中的数大
             while (i < j && arr[i] < temp) {
                 i++;
             }
-            //填坑，左边的那个数入坑，此时右边的指针可以往左一步
+
+            // 填坑，左边的那个数入坑，此时右边的指针可以往左一步
             if (i < j) {
                 arr[j] = arr[i];
                 j--;
             }
+
+            arr[i] = temp;
         }
 
-        //i == j
-        arr[i] = temp;
+        printf("new-start = %d\n", i);
         quickSort(arr, start, i - 1);
         quickSort(arr, i + 1, end);
     }
 }
 
-void quickSortTest(int *arr, int start, int end) {
+void quickSortTest(int *arr, int size) {
     long startTime = getSystemTime();
-    quickSort(arr, start, end);
-    printf("quickSort count %d use time: %ld \n", (end + 1), (getSystemTime() - startTime));
+    quickSort(arr, 0, size - 1);
+    printf("quickSort count %d use time: %ld \n", (size), (getSystemTime() - startTime));
 }
 
-
-//合并算法：从小到大
+// 合并算法：从小到大
 void merge(int arr[], int start, int end, int mid, int *temp) {
     int i_start = start;
     int i_end = mid;
@@ -227,9 +246,10 @@ void merge(int arr[], int start, int end, int mid, int *temp) {
     }
 }
 
-//归并排序
+/**
+ * 归并排序
+ */
 void mergeSort(int arr[], int start, int end, int *temp) {
-
     if (start >= end) {
         return;
     }
@@ -243,7 +263,6 @@ void mergeSort(int arr[], int start, int end, int *temp) {
     //合并
     merge(arr, start, end, mid, temp);
 }
-
 
 void mergeSortTest() {
     int *myArr = createArray();
@@ -261,14 +280,16 @@ void mergeSortTest() {
 
 
 /**
-	@param myArr 待调整的数组
-	@param index 待调整的结点的下标
-	@param len 数组的长度
+ * 堆排序
+ *
+ * @param myArr 待调整的数组
+ * @param index 待调整的结点的下标
+ * @param len 数组的长度
 */
 void heapAdjust(int arr[], int index, int len) {
-
     //先保存当前结点的下标
     int max = index;
+
     //保存左右孩子的数组下标
     int lchild = index * 2 + 1;
     int rchild = index * 2 + 2;
@@ -288,7 +309,7 @@ void heapAdjust(int arr[], int index, int len) {
     }
 }
 
-/**堆排序*/
+/** 堆排序 */
 void heapSort(int myArr[], int len) {
     //初始化堆
     for (int i = len / 2 - 1; i >= 0; i--) {
@@ -310,14 +331,16 @@ void heapSortTest(int *arr, int size) {
 
 int main() {
     int *arr = createArray();
+    //int *arr = createFixedArray();
 
-//    bubbleSort(arr, MAX); //冒泡排序
-//    selectSort(arr, MAX); //选择排序
-//    insertSort(arr, MAX); //插入排序
-//    shellSort(arr, MAX);  //希尔排序
-    quickSortTest(arr, 0, MAX - 1);   //快速排序
-//    mergeSortTest();  //归并排序
-//    heapSortTest(arr, MAX);   //调用排序
-//    printArray(arr, MAX);
+    //bubbleSort(arr, MAX); //冒泡排序
+    //selectSort(arr, MAX); //选择排序
+    //insertSort(arr, MAX); //插入排序
+    //shellSort(arr, MAX);  //希尔排序
+    quickSortTest(arr, MAX);   //快速排序
+    //mergeSortTest();  //归并排序
+    //heapSortTest(arr, MAX);   //调用排序
+
+    printArray(arr, 8);
     return EXIT_SUCCESS;
 }

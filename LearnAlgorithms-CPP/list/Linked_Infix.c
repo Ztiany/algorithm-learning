@@ -10,8 +10,8 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include "LinkedStack.h"
+#include "LinkedList.h"
 
 //判断是否是数字
 int IsNumber(char c) {
