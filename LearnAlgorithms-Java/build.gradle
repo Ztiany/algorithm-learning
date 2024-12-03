@@ -13,6 +13,7 @@ sourceSets {
     main {
         java {
             srcDir("src/main/leetcode/")
+            srcDir("src/main/interview/")
             srcDir("src/main/tool/")
         }
     }
