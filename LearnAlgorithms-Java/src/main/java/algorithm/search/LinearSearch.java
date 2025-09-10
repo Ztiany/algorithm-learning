@@ -5,7 +5,7 @@ import utils.ArrayGenerator;
 import java.util.Objects;
 
 /**
- * chapter01：线性查找。
+ * 线性查找。
  */
 public class LinearSearch {
 
@@ -20,7 +20,7 @@ public class LinearSearch {
             Integer[] integers = ArrayGenerator.generateOrderedArray(i);
             long start = System.nanoTime();
             for (int i1 = 0; i1 < times; i1++) {
-                LinearSearch.search(integers, i);
+                int result = LinearSearch.search(integers, i);
             }
             long end = System.nanoTime();
 
@@ -28,7 +28,7 @@ public class LinearSearch {
         }
     }
 
-    /*只支持 int*/
+    /* 只支持 int */
     public static int searchInt(int[] arr, int target) {
         if (arr == null) {
             return -1;
