@@ -7,6 +7,7 @@
   - `algorithm`
     - search：搜索算法
     - sort：排序算法
+    - geekdp：动态规划（极客时间课程）
   - `structure`
     - arrays：动态数组
     - linked：链表、使用链表实现栈和队列
@@ -27,6 +28,7 @@
 
 **参考资料**：
 
-- [玩转数据结构](https://coding.imooc.com/class/207.html) + [参考代码](https://github.com/liuyubobobo/Play-with-Data-Structures)
-- [算法与数据结构体系课](https://class.imooc.com/sale/datastructure)
 - [LeetCode](https://leetcode.com/)
+- [动态规划面试宝典](https://time.geekbang.org/column/intro/100060501)
+- [玩转数据结构](https://coding.imooc.com/class/207.html) + [代码](https://github.com/liuyubobobo/Play-with-Data-Structures)
+- [算法与数据结构体系课](https://class.imooc.com/sale/datastructure)
