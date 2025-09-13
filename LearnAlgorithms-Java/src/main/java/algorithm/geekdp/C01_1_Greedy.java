@@ -4,7 +4,7 @@ package algorithm.geekdp;
 public class C01_1_Greedy {
 
     public static void main(String[] args) {
-        TestHelper.test(new Greedy());
+        Tester.test(new Greedy());
     }
 
     /**

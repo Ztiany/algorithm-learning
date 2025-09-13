@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class C03_Memoization {
 
     public static void main(String[] args) {
-        TestHelper.test(new MemoizationSolution());
+        Tester.test(new MemoizationSolution());
     }
 
     /**

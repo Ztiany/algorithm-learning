@@ -4,8 +4,8 @@ public class C01_2_Exhaustive_Backtracking {
 
 
     public static void main(String[] args) {
-        TestHelper.test(new BacktrackingSolution());
-        TestHelper.test(new ExhaustiveBacktrackingSolution());
+        Tester.test(new BacktrackingSolution());
+        Tester.test(new ExhaustiveBacktrackingSolution());
     }
 
     /**

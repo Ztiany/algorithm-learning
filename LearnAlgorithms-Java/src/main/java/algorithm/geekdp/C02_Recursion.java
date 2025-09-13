@@ -6,8 +6,8 @@ import java.util.Collections;
 public class C02_Recursion {
 
     public static void main(String[] args) {
-        TestHelper.test(new RecursionSolution());
-        TestHelper.test(new RecursionSolution2());
+        Tester.test(new RecursionSolution());
+        Tester.test(new RecursionSolution2());
     }
 
     /**
