@@ -15,7 +15,7 @@ public class C01_1_Greedy {
      *      开始使用 4 的硬币，结果就会发现无法凑出 6，而如果一开始使用 3 的硬币，就能凑出 6。
      * </pre>
      */
-    static class Greedy implements CoinChangeProblem {
+    private static class Greedy implements CoinChangeProblem {
 
         @Override
         public int coinChange(int[] coins, int amount) {
